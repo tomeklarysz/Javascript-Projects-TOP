@@ -1,6 +1,5 @@
 const container = document.querySelector('.container');
 
-
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -49,9 +48,19 @@ const displayBooks = () => {
     const removeBtn = document.createElement('button');
     readBtn.innerText = "Toggle read status";
     removeBtn.innerText = "Remove Book";
+    
     removeBtn.addEventListener('click', () => {
       index = bookDiv.dataset.index;
       const x = myLibrary.splice(index, 1);
+      displayBooks();
+    });
+
+    readBtn.addEventListener('click', () => {
+      if (book.read) {
+        book.read = false;
+      } else {
+        book.read = true;
+      }
       displayBooks();
     });
 
