@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.books {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-content: center;
+  gap: 20px;
+  margin: 25px;
+}
+
+.book {
+  border: 1px solid aquamarine;
+  border-radius: 10px;
+}
