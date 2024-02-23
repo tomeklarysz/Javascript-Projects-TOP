@@ -1,4 +1,7 @@
-body {
+body,
+button,
+dialog,
+input {
   background-color: black;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: white;
@@ -16,7 +19,40 @@ body {
   margin: 25px;
 }
 
-.book {
+.book,
+button,
+dialog {
   border: 1px solid aquamarine;
-  border-radius: 10px;
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:active {
+  scale: .95;
+}
+
+#new-book {
+  padding: 10px;
+  font-size: large;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+input {
+  border: 1px white solid;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+#checkbox,
+#submit {
+  align-self: center;
+  margin: 5px;
 }
