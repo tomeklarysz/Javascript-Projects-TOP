@@ -29,6 +29,7 @@ addBookToLibrary(new Book("Przemiana", "Franz Kafka", 100, false));
 
 const displayBooks = () => {
   const books = document.querySelector('.books');
+  books.replaceChildren();
   for (const book of myLibrary) {
     const bookDiv = document.createElement('div');
     bookDiv.setAttribute('class', 'book'); 
@@ -52,5 +53,40 @@ const displayBooks = () => {
   container.appendChild(books);
 
 }
-
 displayBooks();
+
+const newBookBtn = document.getElementById('new-book');
+const dialog = document.getElementById('dialog');
+const submitBtn = document.getElementById('submit');
+
+newBookBtn.addEventListener('click', () => {
+  dialog.showModal();
+});
+
+submitBtn.addEventListener('click', (e) => {
+  
+  e.preventDefault();
+  getNewBook();
+  dialog.close();
+  displayBooks();
+});
+
+const getNewBook = () => {
+
+  const title = document.getElementById('title');
+  const author = document.getElementById('author');
+  const pages = document.getElementById('pages');
+  const read = document.getElementById('read');
+
+  addBookToLibrary(new Book(
+    title.value,
+    author.value,
+    pages.value,
+    read.checked
+  ));
+
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  read.checked = false;
+};
