@@ -30,9 +30,11 @@ addBookToLibrary(new Book("Przemiana", "Franz Kafka", 100, false));
 const displayBooks = () => {
   const books = document.querySelector('.books');
   books.replaceChildren();
+  let indexCounter = 0;
   for (const book of myLibrary) {
     const bookDiv = document.createElement('div');
     bookDiv.setAttribute('class', 'book'); 
+    bookDiv.setAttribute('data-index', `${indexCounter}`)
     
     const title = document.createElement('p');
     title.innerText = book.title;
@@ -42,13 +44,30 @@ const displayBooks = () => {
     pages.innerText = book.pages;
     const read = document.createElement('p');
     read.innerText = book.read ? "Read" : "Not Read";
-    
+
+    const readBtn = document.createElement('button');
+    const removeBtn = document.createElement('button');
+    readBtn.innerText = "Toggle read status";
+    removeBtn.innerText = "Remove Book";
+    removeBtn.addEventListener('click', () => {
+      index = bookDiv.dataset.index;
+      const x = myLibrary.splice(index, 1);
+      displayBooks();
+    });
+
     bookDiv.appendChild(title);
     bookDiv.appendChild(author);
     bookDiv.appendChild(pages);
     bookDiv.appendChild(read);
     
+    const btnDiv = document.createElement('div');
+    btnDiv.setAttribute('class', 'buttons');
+    btnDiv.appendChild(readBtn);
+    btnDiv.appendChild(removeBtn);
+    bookDiv.appendChild(btnDiv);
+    
     books.appendChild(bookDiv);
+    indexCounter++;
   }
   container.appendChild(books);
 

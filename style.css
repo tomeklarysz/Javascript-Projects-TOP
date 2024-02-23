@@ -56,3 +56,19 @@ input {
   align-self: center;
   margin: 5px;
 }
+
+::backdrop {
+  background: rgb(5, 5, 5);
+  opacity: 0.5;
+}
+
+.buttons {
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.buttons button {
+  padding: 10px;
+  font-size: small;
+}
