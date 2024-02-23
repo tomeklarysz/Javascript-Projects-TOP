@@ -1,5 +1,7 @@
+const container = document.querySelector('.container');
 
-const myLibrary = [];
+
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -17,6 +19,38 @@ function Book(title, author, pages, read) {
   };
 }
 
-function addBookToLibrary() {
-  
+function addBookToLibrary(book) {
+  myLibrary.push(book);
 }
+
+addBookToLibrary(new Book("Dżuma", "Albert Cameux", 250, true));
+addBookToLibrary(new Book("Zbrodnia i Kara", "Fiodor Dostoyevsky", 300, true));
+addBookToLibrary(new Book("Przemiana", "Franz Kafka", 100, false));
+
+const displayBooks = () => {
+  const books = document.querySelector('.books');
+  for (const book of myLibrary) {
+    const bookDiv = document.createElement('div');
+    bookDiv.setAttribute('class', 'book'); 
+    
+    const title = document.createElement('p');
+    title.innerText = book.title;
+    const author = document.createElement('p');
+    author.innerText = book.author;
+    const pages = document.createElement('p');
+    pages.innerText = book.pages;
+    const read = document.createElement('p');
+    read.innerText = book.read ? "Read" : "Not Read";
+    
+    bookDiv.appendChild(title);
+    bookDiv.appendChild(author);
+    bookDiv.appendChild(pages);
+    bookDiv.appendChild(read);
+    
+    books.appendChild(bookDiv);
+  }
+  container.appendChild(books);
+
+}
+
+displayBooks();
