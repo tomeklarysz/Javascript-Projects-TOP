@@ -86,17 +86,18 @@ displayBooks();
 const newBookBtn = document.getElementById('new-book');
 const dialog = document.getElementById('dialog');
 const submitBtn = document.getElementById('submit');
+const form = document.querySelector('form');
 
 newBookBtn.addEventListener('click', () => {
   dialog.showModal();
 });
 
-submitBtn.addEventListener('click', (e) => {
-  
-  e.preventDefault();
-  getNewBook();
-  dialog.close();
-  displayBooks();
+submitBtn.addEventListener('click', () => {
+  if (form.checkValidity()) {
+    getNewBook();
+    dialog.close();
+    displayBooks();
+  }
 });
 
 const getNewBook = () => {
